@@ -1,0 +1,25 @@
+<view class="container">
+  <view class="chart-panel">
+    <view class="panel-title">📉 近期情绪量化趋势</view>
+    <canvas type="2d" id="moodChart" class="mood-canvas"></canvas>
+  </view>
+  
+  <view class="form-box">
+    <view class="display-index">当前加权指数: <text class="highlight">{{currentIndexDisplay}}</text></view>
+
+    <view class="input-group">
+      <view class="label">心情打分 (1-10)：</view>
+      <input type="number" value="{{score}}" bindinput="onScoreInput" placeholder="请输入你的主观分值" class="input-field" />
+    </view>
+
+    <view class="input-group">
+      <view class="label">核心压力源：</view>
+      <picker mode="selector" range="{{stressTags}}" bindchange="onTagChange">
+        <view class="picker-box">{{selectedTag || '👉 点击选择今日压力标签'}}</view>
+      </picker>
+    </view>
+
+    <button class="btn-submit" bindtap="submitData">📝 提交今日打卡</button>
+    <button class="btn-undo" bindtap="undoLastRecord">↩️ 撤销上一条记录</button>
+  </view>
+</view>
